@@ -1,0 +1,60 @@
+diff -u -r a/src/doomdef.h b/src/doomdef.h
+--- a/src/doomdef.h	2019-08-17 21:07:04.000000000 +0300
++++ b/src/doomdef.h	2023-03-07 10:34:50.796449364 +0200
+@@ -371,7 +371,7 @@
+ 
+ // Things that used to be in dstrings.h
+ #define SAVEGAMENAME "srb2sav"
+-char savegamename[256];
++extern char savegamename[256];
+ 
+ // m_misc.h
+ #ifdef GETTEXT
+diff -u -r a/src/doomstat.h b/src/doomstat.h
+--- a/src/doomstat.h	2019-08-17 21:07:04.000000000 +0300
++++ b/src/doomstat.h	2023-03-07 10:34:15.160022757 +0200
+@@ -383,7 +383,7 @@
+ extern UINT8 mapvisited[NUMMAPS];
+ 
+ // Temporary holding place for nights data for the current map
+-nightsdata_t ntemprecords;
++extern nightsdata_t ntemprecords;
+ 
+ extern UINT32 token; ///< Number of tokens collected in a level
+ extern UINT32 tokenlist; ///< List of tokens collected
+diff -u -r a/src/mserv.h b/src/mserv.h
+--- a/src/mserv.h	2019-08-17 21:07:04.000000000 +0300
++++ b/src/mserv.h	2023-03-07 10:36:44.933815408 +0200
+@@ -68,7 +68,7 @@
+ // < 0 to not connect (usually -1) (offline mode)
+ // == 0 to show all rooms, not a valid hosting room
+ // anything else is whatever room the MS assigns to that number (online mode)
+-INT16 ms_RoomId;
++extern INT16 ms_RoomId;
+ 
+ const char *GetMasterServerPort(void);
+ const char *GetMasterServerIP(void);
+diff -u -r a/src/p_saveg.c b/src/p_saveg.c
+--- a/src/p_saveg.c	2019-08-17 21:07:04.000000000 +0300
++++ b/src/p_saveg.c	2023-03-07 10:35:28.560901393 +0200
+@@ -46,6 +46,8 @@
+ #define ARCHIVEBLOCK_THINKERS 0x7F37037C
+ #define ARCHIVEBLOCK_SPECIALS 0x7F228378
+ 
++char savegamename[256];
++
+ // Note: This cannot be bigger
+ // than an UINT16
+ typedef enum
+diff -u -r a/src/s_sound.h b/src/s_sound.h
+--- a/src/s_sound.h	2019-08-17 21:07:04.000000000 +0300
++++ b/src/s_sound.h	2023-03-07 10:36:24.809574584 +0200
+@@ -204,7 +204,7 @@
+ #ifdef MUSICSLOT_COMPATIBILITY
+ // For compatibility with code/scripts relying on older versions
+ // This is a list of all the "special" slot names and their associated numbers
+-const char *compat_special_music_slots[16];
++extern const char *compat_special_music_slots[16];
+ #endif
+ 
+ #endif
